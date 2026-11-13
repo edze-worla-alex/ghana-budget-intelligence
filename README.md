@@ -14,12 +14,17 @@ Without an API key, **Ask the Budget** runs in retrieval-only mode: it shows the
 | Route | What it does |
 |---|---|
 | `/` | Animated hero + donut, count-up KPIs, 2022→2025 recovery cards, pillar bars, mini region map, AI prompt chips, "what matters most" |
-| `/pillars` | Eight-pillar explorer: stated amount, targets, linkages, extracted commitments |
+| `/pillars` | Proportional US$10bn bar, pillar dossier (stated amount, share ring, ¶68 role), tabs for targets and milestones, value chains and commitments; jobs figures only where stated |
 | `/indicators` | Area+band, bar+trend, grouped bars, donuts, concentric rings, gauge, stacked bar, delivery-calendar combo, plus the per-indicator detail charts. Reported vs target vs ambition always distinct; gaps never estimated |
-| `/map` | 16-region tile map, sector filter, per-region projects with amounts and sources |
-| `/tracker` | Promise vs Progress: 37 extracted commitments beside verified updates (none yet) |
+| `/map` | Real 16-region Ghana map: hover tooltips, click or keyboard select, sector filter, choropleth by commitment count, hatching where location is inferred, region panel with amounts and sources |
+| `/tracker` | Promise vs Progress: board (promise beside proof), table, Gantt-style timeline, detail drawer quoting the speech, CSV export. 37 commitments, 0 verified updates |
 | `/ai` + `/api/ai` | BM25 retrieval over all 701 paragraphs → Gemini/OpenAI streaming, with ¶/page citations |
 | `/data` + `/api/exports` | XLSX (5 formatted sheets) and CSV; filter by `sector` or `pillar` |
+
+## Map data and hero image
+- **Map:** `data/ghana-map.ts` holds region outlines taken from `kwameboame/ghana-svg-map` (hand-traced vector artwork; schematic, not survey-grade). **That repo declares no licence.** Before publishing, get the author's permission or regenerate from open data: `node scripts/geojson-to-paths.mjs regions.geojson` (e.g. geoBoundaries ADM1, CC BY 4.0; check it has the 16 post-2018 regions). The converter was tested on partial sample data only.
+- **Hero:** `public/hero-ghana.svg` is an original vector illustration (Accra skyline, Black Star Gate, dusk over the Gulf of Guinea), not a photograph. To use a photo, add it to `public/` and change `HERO_IMAGE` in `lib/site.ts`.
+- **Pillar roles** on `/pillars` are paraphrased from ¶68. The speech names a role for each pillar but no pillar-to-pillar flows, so none are drawn.
 
 ## Layout and assistant
 - Left sidebar (`components/Shell.tsx`), drawer on mobile.
@@ -41,7 +46,7 @@ Without an API key, **Ask the Budget** runs in retrieval-only mode: it shows the
 5. The speech has large non-New-Economy sector allocations (¶590+). Only a few are extracted (stadia, northern water). Extend `data/commitments.ts` for the rest.
 
 ## Not built yet (deliberately out of scope)
-Admin UI and DB (progress updates are a validated JSON file for now; move to Prisma when you need multi-user editing), embeddings (BM25 is used; swap `lib/ai/retrieve.ts` for pgvector later), PDF/PNG export, GeoJSON choropleth (the tile map needs no geometry; replace `RegionMap` tiles with SVG paths if you add a boundary file).
+Admin UI and DB (progress updates are a validated JSON file for now; move to Prisma when you need multi-user editing), embeddings (BM25 is used; swap `lib/ai/retrieve.ts` for pgvector later), PDF/PNG export.
 
 ## Deploy
 Vercel: set the env vars from `.env.example`. The in-memory rate limiter in `app/api/ai/route.ts` is per instance; use Upstash for production.

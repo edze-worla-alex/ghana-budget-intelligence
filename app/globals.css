@@ -7,8 +7,8 @@
   --color-border: var(--border); --color-primary: var(--primary); --color-primary-foreground: var(--primary-foreground);
   --color-ring: var(--ring); --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
-:root { --background: #F8F7F3; --foreground: #101C2C; --card: #FFFFFF; --muted: #ECEAE3; --muted-foreground: #697586; --border: #DDD9CE; --primary: #101C2C; --primary-foreground: #F8F7F3; --ring: #D5A62E; }
-.dark { --background: #101C2C; --foreground: #F8F7F3; --card: #17283C; --muted: #1E3148; --muted-foreground: #9AA7B8; --border: #2A3F58; --primary: #D5A62E; --primary-foreground: #101C2C; --ring: #D5A62E; }
+:root { --map-fill: #087A4B; --background: #F8F7F3; --foreground: #101C2C; --card: #FFFFFF; --muted: #ECEAE3; --muted-foreground: #697586; --border: #DDD9CE; --primary: #101C2C; --primary-foreground: #F8F7F3; --ring: #D5A62E; }
+.dark { --map-fill: #3FBF8A; --background: #101C2C; --foreground: #F8F7F3; --card: #17283C; --muted: #1E3148; --muted-foreground: #9AA7B8; --border: #2A3F58; --primary: #D5A62E; --primary-foreground: #101C2C; --ring: #D5A62E; }
 @layer base { * { border-color: var(--border); } body { font-feature-settings: "tnum"; } }
 
 /* Motion + texture used by the homepage hero */

@@ -3,3 +3,11 @@ export const C = { navy: "#101C2C", midnight: "#17283C", gold: "#D5A62E", green:
 export const PILLAR_COLORS: Record<number, string> = { 1: "#64748B", 2: C.gold, 3: C.blue, 4: C.purple, 5: C.red, 6: C.teal, 7: C.green, 8: "#9AA7B8" };
 export const SECTOR_COLORS = [C.gold, C.green, C.blue, C.purple, C.red, C.teal, "#9AA7B8", "#64748B", "#B58900", "#4F8A8B"];
 export const TOOLTIP_STYLE = { background: "#17283C", border: "1px solid #2A3F58", color: "#F8F7F3", borderRadius: 8, fontSize: 12 } as const;
+
+export const SECTOR_COLOR: Record<string, string> = {
+  "Macro & Finance": "#64748B", Agriculture: C.gold, Energy: C.blue, "Critical Minerals": C.purple, "Tourism & Creative Arts": C.red,
+  "Textiles & Garments": C.teal, Pharmaceuticals: C.green, Technology: "#9AA7B8", Infrastructure: "#B58900", "Social & Sports": "#4F8A8B",
+};
+export const STATUS_COLOR: Record<string, string> = {
+  Announced: "#697586", Planned: C.gold, "In preparation": C.blue, "In progress": C.green, Completed: "#0B5D3A", Delayed: C.red, Unverified: "#9AA7B8",
+};

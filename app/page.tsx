@@ -9,6 +9,7 @@ import { SourceChip } from "@/components/SourceChip";
 import { CountUp } from "@/components/home/CountUp";
 import { AskChip } from "@/components/home/AskChip";
 import { MiniMap } from "@/components/home/MiniMap";
+import { HERO_IMAGE } from "@/lib/site";
 
 const KPIS = [
   { n: <CountUp to={10} prefix="US$" suffix="bn" />, l: "New Economy Programme, 2027–2030", p: [66], tip: "Spent over four years across eight connected pillars." },
@@ -40,9 +41,9 @@ export default function Home() {
       {/* HERO */}
       <section className="animate-rise relative overflow-hidden rounded-3xl bg-[#101C2C] text-[#F8F7F3] ring-1 ring-white/10">
         <div className="absolute inset-x-0 top-0 flex h-1"><span className="flex-1 bg-[#CE1126]" /><span className="flex-1 bg-[#D5A62E]" /><span className="flex-1 bg-[#087A4B]" /></div>
-        <div className="animate-drift absolute -left-28 -top-28 h-[26rem] w-[26rem] rounded-full bg-[#087A4B]/35 blur-3xl" />
-        <div className="animate-drift2 absolute -bottom-40 right-0 h-[28rem] w-[28rem] rounded-full bg-[#D5A62E]/25 blur-3xl" />
-        <div className="bg-grid absolute inset-0 opacity-[0.06] [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
+        <div className="absolute inset-0 bg-cover" style={{ backgroundImage: `url(${HERO_IMAGE})`, backgroundPosition: "72% 85%" }} aria-hidden />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#101C2C]/90 via-[#101C2C]/45 to-transparent" aria-hidden />
+        <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#101C2C]/70 to-transparent" aria-hidden />
         <div className="relative grid gap-10 p-7 sm:p-10 lg:grid-cols-[1.15fr_1fr] lg:p-14">
           <div>
             <p className="inline-flex items-center gap-2 rounded-full border border-white/15 px-3 py-1 text-xs text-white/70"><span className="h-1.5 w-1.5 rounded-full bg-[#D5A62E]" />Budget Speech · 12 November 2026</p>
@@ -57,7 +58,7 @@ export default function Home() {
               <Link href="/data" className="rounded-full border border-white/25 px-5 py-2.5 transition hover:bg-white/10">Download data</Link>
             </div>
           </div>
-          <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+          <div className="self-start rounded-2xl border border-white/10 bg-[#101C2C]/60 p-5 backdrop-blur-[3px]">
             <div className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-white/50">Where the stated pillar money goes</div>
             <DonutPillars data={t.shares} dark />
             <p className="mt-3 text-[11px] text-white/45">Pillar 1 states no amount. The sum of the other seven is computed and equals the US$10bn headline.</p>

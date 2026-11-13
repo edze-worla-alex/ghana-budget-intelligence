@@ -39,3 +39,11 @@ export function deliveryByYear() {
   let cum = 0;
   return [...m.values()].sort((a, b) => a.y - b.y).map((r) => ({ ...r, label: String(r.y), cumulative: (cum += r.targets) }));
 }
+
+/** Years cited in a commitment's start/target text (year-level precision only). */
+export function commitmentYears(c: Commitment) {
+  const yrs = (s?: string) => [...new Set((s ?? "").match(/20\d\d/g) ?? [])].map(Number).sort();
+  const s = yrs(c.start), t = yrs(c.target);
+  const all = [...new Set([...s, ...t])].sort();
+  return { start: s[0], end: t.length ? t[t.length - 1] : undefined, all };
+}

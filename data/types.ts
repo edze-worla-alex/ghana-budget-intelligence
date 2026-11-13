@@ -33,7 +33,8 @@ export interface Pillar {
   amountUSDm: number | null; amountPara: number;
   summary: string;
   headlineTargets: { text: string; para: number }[];
-  feeds: number[]; // pillars it supplies (economic linkage, ¶68)
+  /** Paraphrase of this pillar's role in ¶68 ("one production system"). */
+  role: string; rolePara: number;
 }
 
 export type PointKind = "reported" | "target" | "ambition";
